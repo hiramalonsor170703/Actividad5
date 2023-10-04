@@ -1,0 +1,314 @@
+package Animal;
+import java.util.Random;
+
+public abstract class Animal {
+
+	//atributos
+	private String Nombre;
+    private int Edad;
+    private boolean Oviparo;
+    
+    
+    //metodos constructores
+ 
+ public Animal(String Nombre, int Edad) {
+	 setNombre(Nombre);
+	 setEdad(0);
+	 setOviparo(true);
+ }
+ public Animal(){}
+ //setters
+ 	public void setNombre (String Nombre) {
+	 this.Nombre = Nombre;
+	 }
+ 	public void setEdad (int Edad) {
+	 this.Edad = Edad;
+	 }
+	public void setOviparo (boolean Oviparo) {
+		this.Oviparo = Oviparo;
+	}
+public void generaraleatorio() {
+	
+	String[] nombres= new String[8];
+	nombres[0]="Princesa";
+	nombres[1]="El jajas";
+	nombres[2]="Segador de almas";
+	nombres[3]="Josue";
+	nombres[4]="JF kennedy";
+	nombres[5]="kanye West";
+	nombres[6]="Goku";
+	nombres[7]="Licuadora";
+	
+
+	Random random = new Random();
+	int prenomb = random.nextInt(10);
+	int predad = random.nextInt(27);
+	boolean preOviparo = random.nextBoolean();
+	
+	setNombre(nombres [prenomb]);
+	setEdad (predad);
+	setOviparo (preOviparo);
+}
+
+	//get
+
+public String getNombre(){
+return Nombre;
+}
+public  int getEdad(){
+return Edad;
+}
+public boolean getOviparo(){
+return Oviparo;
+}
+
+//metodos
+
+public boolean Viviparo() {
+	Oviparo=false;
+	return Oviparo;
+}
+
+public abstract void sonido();
+
+public void displayAll() {
+System.out.println ("Se llama " +getNombre());
+System.out.println ("tiene " +getEdad()+ " años");
+System.out.println ("Es un animal " +getOviparo());
+}}
+//ave
+package Animal;
+import java.util.Random;
+public class Ave extends Animal {
+ 
+	private boolean vuela;
+	private int plumas; 
+	
+	public Ave (String Nombre, int Edad) {
+		super (Nombre, Edad);
+		}
+	
+	public Ave() {
+
+		Random random = new Random();
+		this.vuela=random.nextBoolean();
+		this.plumas=random.nextInt();
+	}
+	
+	public void sonido() {
+		
+	}
+	
+	//get
+	public int getsiplumas() {
+		return plumas;
+	}
+	public boolean getsivuela() {
+		return vuela;
+	}
+	//set
+	public void setplumas(int plumas) {
+		this.plumas = plumas;
+	}
+
+	public void setvuela (boolean vuela) {
+		this.vuela = vuela;
+	}
+	public void display() {
+		 
+		System.out.println();
+		System.out.println("Ave");
+		displayAll();
+	System.out.println("Tiene "+getsiplumas() +" plumas");
+	System.out.println("puede volar: "+getsivuela());
+	 }
+		}
+//mamifero
+package Animal;
+import java.util.Random;
+public class Mamifero extends Animal{
+
+	private int patas;
+private boolean huevos;
+
+public Mamifero (String Nombre, int Edad){
+	super (Nombre, Edad);
+}
+
+public Mamifero() {
+	Random random = new Random();
+	this.patas=random.nextInt();
+	this.huevos=random.nextBoolean();
+	}
+
+public void sonido() {
+System.out.println("en la tierra");
+}
+
+//get
+public int gettienepatas() {
+	return patas;
+}
+public boolean getponerhuevos() {
+	return huevos;
+}
+//set
+public void setpatas(int patas) {
+	this.patas = patas;
+}
+
+public void sethuevos (boolean huevos) {
+	this.huevos = huevos;
+}
+public void display() {
+	 
+System.out.println();
+System.out.println("mamifero");
+displayAll();
+System.out.println("tiene "+gettienepatas()+" patas");
+System.out.println("puede poner huevos? "+getponerhuevos());
+
+	}
+}
+//pez
+package Animal;
+
+import java.util.Random;
+
+public class Pez extends Animal{
+	
+	private boolean respiracionsoloacuatica;
+	private boolean escamas;
+	
+public Pez (String Nombre, int Edad) {
+	super (Nombre, Edad);
+	}
+
+public Pez() {
+ 
+	Random random = new Random();
+	this.escamas=random.nextBoolean();
+	this.respiracionsoloacuatica=random.nextBoolean();
+}
+public void sonido() {}
+//getters
+public boolean getEscamas() {
+	return escamas;
+}
+ public boolean getRespiracionsoloacuatica() {
+	 return respiracionsoloacuatica;
+}
+ 
+ //setters
+ 
+ public void setEscamas(boolean escamas) {
+	 this.escamas=escamas;
+ }
+ 
+ public void setRespiracionsoloacuatica (boolean respiracionsoloacuatica)  {
+	 this.respiracionsoloacuatica = respiracionsoloacuatica;
+	 } 
+ 
+ public void display() {
+	System.out.println();
+	System.out.println("Pez");
+	displayAll();
+System.out.println("Tiene escamas: "+getEscamas());
+System.out.println("solo puede respirar bajo el agua?: "+getRespiracionsoloacuatica()); 
+ }
+}
+//main
+package Animal;
+
+public class Main {
+public static void main (String[]args) {
+	
+	Ejecutar deuna = new Ejecutar();
+	deuna.ejecutar();
+  }
+}
+//ejecutar
+package Animal;
+
+import java.util.Random;
+
+public class Ejecutar {
+	
+	public Ejecutar() {
+	}
+	
+	public void ejecutar() {
+		int[] randArray = new int[10];
+		Random random = new Random();
+		
+		for(int i=0;i<randArray.length;i++) {
+			randArray[i] = random.nextInt(3); 
+		}
+		
+		int[] numContador=conteo(randArray);
+		
+	Aleatorium randalatorio = new Aleatorium();
+		randalatorio.hacer(numContador);
+		
+	}
+	
+	public static int[] conteo(int[] array) {
+		int[] numContador= new int[3];
+		for(int i=0;i<array.length;i++) {
+			switch(array[i]) {
+			case 0:
+				numContador[0]++;
+				continue;
+			case 1:
+				numContador[1]++;
+				continue;
+			case 2:
+				numContador[2]++;
+				continue;
+			}
+		}
+		
+		System.out.println("Mamifero: " +numContador[0]);
+		System.out.println("Ave: " +numContador[1]);
+		System.out.println("Pez: " +numContador[2]);
+		return numContador;
+	}
+}
+//aleatorium
+package Animal;
+
+public class Aleatorium {
+	public Aleatorium() {
+	}
+	
+	public void hacer(int[] contar) {
+		
+		for(int i=0;i<contar.length;i++) {
+		
+		switch(i) {
+		case 0:
+	Mamifero[] arrayMamifero=new Mamifero[contar[i]];
+			for(int j=0;j<contar[i];j++) {
+				arrayMamifero[j]= new Mamifero();
+				arrayMamifero[j].display();
+			}
+			break;
+		case 1:
+			Ave[] arrayAve=new Ave[contar[i]];
+			for(int j=0;j<contar[i];j++) {
+			arrayAve[j]= new Ave();
+			arrayAve[j].display();
+		
+		}
+		 break;
+		case 2:
+			Pez[] arrayPez=new Pez[contar[i]];
+			for(int j=0;j<contar[i];j++) {
+				arrayPez[j]= new Pez();
+				arrayPez[j].display();
+			}
+			break;
+	  }
+	}
+  }
+}
